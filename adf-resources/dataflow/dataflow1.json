@@ -1,0 +1,72 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText1",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText2",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "select1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          S_KEY as string,",
+				"          CUSTOMER_ID as string,",
+				"          FIRST_NAME as string,",
+				"          LAST_NAME as string,",
+				"          ADDRESS1 as string,",
+				"          ADDRESS2 as string,",
+				"          CITY as string,",
+				"          STATE as string,",
+				"          ZIP as string,",
+				"          COUNTRY as string,",
+				"          REGION as string,",
+				"          EMAIL as string,",
+				"          PHONE as string,",
+				"          CREDIT_CARD_TYPE as string,",
+				"          CREDIT_CARD_NUMBER as string,",
+				"          CREDIT_CARD_EXPIRATION as string,",
+				"          USER_NAME as string,",
+				"          PASSWORD as string,",
+				"          DATE_OF_BIRTH as string,",
+				"          INCOME as string,",
+				"          GENDER as string,",
+				"          ROW_INSERTED_DATE as string,",
+				"          ROW_UPDATED_DATE as string,",
+				"          ROW_INSERTED_BY as string,",
+				"          ROW_UPDATED_BY as string,",
+				"          START_DATE as string,",
+				"          END_DATE as string,",
+				"          CURRENT_RECORD_INDICATOR as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source1 select(skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
+			]
+		}
+	}
+}
