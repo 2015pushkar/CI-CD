@@ -1,0 +1,9 @@
+{
+	"name": "adf-test-env-arnav",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "f0e0191f-e836-461d-8cd3-8cb6e8f53b19",
+		"tenantId": "cce6e522-e8a8-4186-ba78-b143bca2b443"
+	}
+}
